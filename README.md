@@ -67,7 +67,7 @@ Redis was installed and run using Docker. The following command creates and star
 docker run -d --name redis-retention -p 6379:6379 redis
 ```
 
----
+
 
 ### Task 2: Set up a retention policy that automatically deletes keys after 24 hours
 
@@ -82,7 +82,7 @@ Then we store a key with 24 TTL(time to live):
 SET user:1001 "{\"name\": \"Alice\", \"email\": \"alice@example.com\", \"age\": \"25\"}" EX 86400
 ```
 
----
+
 
 ### Task 3: Store user data in Redis
 
