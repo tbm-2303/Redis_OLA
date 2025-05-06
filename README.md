@@ -202,7 +202,7 @@ To verify replication, the same key was queried from the slave container. Firsts
 docker exec -it redis-slave redis-cli
 ```
 
-then check if the data is repeated in the slave:
+then check if the data is replicated in the slave:
 ```bash
 HGETALL user:2001
 ```
@@ -214,3 +214,10 @@ To simulate a failure, the master container was stopped:
 
 ```bash
 docker stop redis-master
+```
+Then we try to query the slave:
+```bash
+docker exec -it redis-slave redis-cli
+HGET user:2001 name
+```
+The key still returned the correct value, showing that the slave retains replicated data. However, attempting to write to the slave at this point would fail, as slaves are read-only by default.
