@@ -34,3 +34,20 @@ Once the Redis container is running, connect to it using the Redis CLI with the 
 ```bash
 docker exec -it redis-retention redis-cli
 ```
+
+---
+
+
+## Assignment Overview
+
+**Title:** Redis Configuration and Implementation  
+**Objective:** Implement different Redis configurations and demonstrate their functionality using the Redis CLI or Redis Telnet CLI.
+
+### Scenario
+You have been hired as a software architect for a company that provides online gaming services. The company wants to use Redis as one of its databases to store relevant information, game statistics, and other related data.
+
+### Task Summary
+- Choose and set up **a minimum of 2 out of 5 Redis configurations**
+- Develop **1 simple application, website, or API** that uses at least one of the configurations
+- Ensure the application supports **CRUD operations against Redis**
+- Use **Docker or virtual machines** to simulate setups involving multiple machines (if required)
