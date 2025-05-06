@@ -100,3 +100,28 @@ EXPIRE user:Bob 86400
 HSET user:Charlie name "Charlie" email "charlie@example.com" age "35"
 EXPIRE user:Charlie 86400
 ```
+
+- `HSET`: Stores multiple field-value pairs in a Redis **hash**. Useful for representing structured objects like user profiles.
+- `SADD`: Adds one or more members to a **set**. In this case, used to track a list of usernames.
+- `EXPIRE`: Sets a **TTL (Time To Live)** on a key. After the specified number of seconds, the key will be automatically deleted by Redis.
+
+
+### Task 4: Wait for 24 hours and verify that expired keys are automatically deleted from Redis
+
+To confirm that the retention policy works, a test key was created with a short expiration time (e.g., 10 seconds):
+
+```redis
+SET temp:user "Temporary User" EX 20
+```
+
+```redis
+GET temp:user      # Returns the value if not expired
+# Wait 20 seconds
+GET temp:user      # Returns (nil) – the key has expired
+```
+
+### Screenshot: Redis Retention Policy in Action
+
+Below is a screenshot showing the Redis CLI with a key being created using `SET` and an expiration (`EX`), followed by `GET` showing the key has been deleted after expiration:
+
+![Redis retention CLI example](1.jpg)
