@@ -131,7 +131,7 @@ To see the list of users added to the `users` set, use the following command in 
 ```redis
 SMEMBERS users
 ```
-![Show users](2.jpg)
+![Show users](2.png)
 
 
 To check how much time is left before a key expires, use the `TTL` command:
@@ -139,7 +139,7 @@ To check how much time is left before a key expires, use the `TTL` command:
 ```redis
 TTL user:Alice
 ```
-![Show TTL](3.jpg)
+![Show TTL](3.png)
 
 
 ## Configuration 2: Redis Master-Slave Replication
