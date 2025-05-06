@@ -21,9 +21,16 @@ docker pull redis
 
 ## Running a Redis Container
 
-To start a Redis container, with the name "redis-retention", and expose it on your local machine:
+To start a Redis container(start the redis open-source server), with the name `redis-retention`, and expose it on your local machine on port 6379:
 
 ```bash
 docker run -d --name redis-retention -p 6379:6379 redis
+```
 
+## Connecting to the Redis Server Using Redis CLI
+
+Once the Redis container is running, connect to it using the Redis CLI with the following command:
+
+```bash
+docker exec -it redis-retention redis-cli
 ```
