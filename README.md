@@ -125,3 +125,18 @@ GET temp:user      # Returns (nil) – the key has expired
 Below is a screenshot showing the Redis CLI with a key being created using `SET` and an expiration (`EX`), followed by `GET` showing the key has been deleted after expiration:
 
 ![Redis retention CLI example](1.jpg)
+
+To see the list of users added to the `users` set, use the following command in the Redis CLI:
+
+```redis
+SMEMBERS users
+```
+![Show users](2.jpg)
+
+
+To check how much time is left before a key expires, use the `TTL` command:
+
+```redis
+TTL user:Alice
+```
+![Show TTL](3.jpg)
