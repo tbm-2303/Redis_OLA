@@ -1,8 +1,8 @@
 # Redis_OLA# Redis OLA Assignment – Database Course
 
-**Name:** Timothy Busk Mortensen  
-**Platform:** Windows 11  
-**Course:** Database Systems
+`Name:` Timothy Busk Mortensen  
+`Platform:` Windows 11  
+`Course:` Database Systems
 
 This document contains the Redis OLA assignment.
 
