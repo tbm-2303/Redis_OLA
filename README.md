@@ -140,7 +140,7 @@ To check how much time is left before a key expires, use the `TTL` command:
 TTL user:Alice
 ```
 ![Show TTL](3.png)
-
+---
 
 ## Configuration 2: Redis Master-Slave Replication
 
@@ -160,6 +160,13 @@ docker run -d --name redis-master -p 6381:6379 redis
 
 ```bash
 # Start the slave container on port 6382
-
 docker run -d --name redis-slave -p 6382:6379 redis
+```
+
+### Task 2: Set up a Master-Slave replication configuration between the two Redis instances
+
+First, the internal IP address of the master container was retrieved using the following command:
+
+```bash
+docker inspect -f "{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}" redis-master
 ```
