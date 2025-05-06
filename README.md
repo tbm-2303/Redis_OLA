@@ -166,7 +166,51 @@ docker run -d --name redis-slave -p 6382:6379 redis
 ### Task 2: Set up a Master-Slave replication configuration between the two Redis instances
 
 First, the internal IP address of the master container was retrieved using the following command:
-
 ```bash
 docker inspect -f "{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}" redis-master
 ```
+![Show users](ipMaster.png)
+
+Then, the slave was connected to the master by executing the following command inside the slave's Redis CLI:
+```bash
+docker exec -it redis-slave redis-cli
+```
+The SLAVEOF command serts the slave to replicate all data from the master. 
+```bash
+SLAVEOF 172.17.0.2 6379
+```
+
+### Task 3: Store user data in the Master Redis instance
+
+add user data with the redis CLI. Connect to the master container using the cli:
+```bash
+docker exec -it redis-master redis-cli
+```
+
+store a user profile in a Redis hash with the key user:2001.
+```bash
+HSET user:2001 name "Dana" email "dana@example.com" level "58" rank "diamond"
+```
+![Show users](master.png)
+
+
+### Task 4: Verify that the Slave Redis instance is replicating data from the Master
+
+To verify replication, the same key was queried from the slave container. Firsts we get a connection to the slave:
+
+```bash
+docker exec -it redis-slave redis-cli
+```
+
+then check if the data is repeated in the slave:
+```bash
+HGETALL user:2001
+```
+![Show users](slave.png)
+
+### Task 5: Test the configuration by stopping the Master and verifying the Slave can handle requests
+
+To simulate a failure, the master container was stopped:
+
+```bash
+docker stop redis-master
