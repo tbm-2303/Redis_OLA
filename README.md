@@ -17,6 +17,7 @@ Redis was installed using Docker on Windows. The official Redis image was pulled
 ```bash
 # Download the official Redis image
 docker pull redis
+```
 
 ## Running a Redis Container
 
@@ -25,4 +26,4 @@ To start a Redis container, with the name "redis-retention", and expose it on yo
 ```bash
 docker run -d --name redis-retention -p 6379:6379 redis
 
-
+```
