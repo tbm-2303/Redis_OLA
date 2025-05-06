@@ -51,3 +51,52 @@ You have been hired as a software architect for a company that provides online g
 - Develop **1 simple application, website, or API** that uses at least one of the configurations
 - Ensure the application supports **CRUD operations against Redis**
 - Use **Docker or virtual machines** to simulate setups involving multiple machines (if required)
+---
+
+
+## Configuration 1: Redis with Retention Policy
+
+### Objective
+Implement a retention policy in Redis so that user data is automatically deleted after a set time period (24 hours). This helps manage memory efficiently and is useful for temporary data like API caching or user sessions.
+
+### Task 1: Install Redis on your machine and configure it to run on the default port (6379)
+
+Redis was installed and run using Docker. The following command creates and starts a Redis container exposed on the default port:
+
+```bash
+docker run -d --name redis-retention -p 6379:6379 redis
+```
+
+---
+
+### Task 2: Set up a retention policy that automatically deletes keys after 24 hours
+
+Redis does not require a separate configuration file to enable expiration. Instead, key expiration is set directly when storing data using the `EX` (expire) option. To connect to the Redis CLI:
+
+```bash
+docker exec -it redis-retention redis-cli
+```
+
+Then we store a key with 24 TTL(time to live):
+```bash
+SET user:1001 "{\"name\": \"Alice\", \"email\": \"alice@example.com\", \"age\": \"25\"}" EX 86400
+```
+
+---
+
+### Task 3: Store user data in Redis
+
+Multiple user records were added using Redis hashes and strings, all with expiration set to 24 hours:
+
+```redis
+SADD users "Alice" "Bob" "Charlie"
+
+HSET user:Alice name "Alice" email "alice@example.com" age "25"
+EXPIRE user:Alice 86400
+
+HSET user:Bob name "Bob" email "bob@example.com" age "30"
+EXPIRE user:Bob 86400
+
+HSET user:Charlie name "Charlie" email "charlie@example.com" age "35"
+EXPIRE user:Charlie 86400
+```
