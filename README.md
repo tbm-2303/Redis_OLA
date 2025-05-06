@@ -220,4 +220,5 @@ Then we try to query the slave:
 docker exec -it redis-slave redis-cli
 HGET user:2001 name
 ```
+![alt text](final.png)
 The key still returned the correct value, showing that the slave retains replicated data. However, attempting to write to the slave at this point would fail, as slaves are read-only by default.
