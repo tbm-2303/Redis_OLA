@@ -244,5 +244,5 @@ The key still returned the correct value, showing that the slave retains replica
 
 - Get 
 
-![Show users](final_ex.png)
+![Show users](FINAL_ex.png)
 
