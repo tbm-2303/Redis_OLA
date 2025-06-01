@@ -246,3 +246,7 @@ The key still returned the correct value, showing that the slave retains replica
 
 ![Show users](FINAL_ex.png)
 
+The rentention policy is inforced in the POST implementation. Created users through the API will therefore have TTL set to 1 day. 
+
+![Show users](show1.png)
+![Show users](show2.png)
