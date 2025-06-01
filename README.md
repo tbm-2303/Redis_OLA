@@ -223,6 +223,7 @@ HGET user:2001 name
 ![alt text](final.png)
 The key still returned the correct value, showing that the slave retains replicated data. However, attempting to write to the slave at this point would fail, as slaves are read-only by default.
 
+---
 
 
 ### I created a simple REST API with Springboot that supports CRUD operations for the first redis configuration(The Rention Policy configuration). 
@@ -230,16 +231,18 @@ The key still returned the correct value, showing that the slave retains replica
 #### Testing CRUD operations
 
 - POST
+
 ![POST user](POST_ex.png)
 
 - EDIT
+
 ![Show users](PUT_ex.png)
 
 - DELETE
+
 ![Show users](DELETE_ex.png)
 
 - Get 
+
 ![Show users](final_ex.png)
 
-
-![Show users](master.png)
